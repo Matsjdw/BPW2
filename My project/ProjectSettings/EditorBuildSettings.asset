@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DayScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/NightScene.unity
+    guid: 95b80a5ed69e71847b3dcc6574c0e145
   m_configObjects: {}

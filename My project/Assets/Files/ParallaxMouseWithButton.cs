@@ -1,10 +1,12 @@
 using UnityEngine;
+using TMPro;
 
-public class ParallaxMouse : MonoBehaviour
+public class ParallaxMouseWithButton : MonoBehaviour
 {
-    public Transform[] layers;  // Array of background layers
-    public float[] speeds;      // Array of speeds for each layer
+    public Transform[] layers;      // Array of background layers
+    public float[] speeds;          // Array of speeds for each layer
     public float mouseSensitivity = 1f;
+    public TextMeshProUGUI buttonText;  // Reference to the TextMeshPro button
 
     private Vector3 previousMousePosition;
 
@@ -30,6 +32,14 @@ public class ParallaxMouse : MonoBehaviour
 
             // Move the layer towards the target position
             layers[i].position = Vector3.Lerp(layers[i].position, targetPosition, Time.deltaTime);
+        }
+
+        // Move the TextMeshPro button with the parallax effect
+        if (buttonText != null)
+        {
+            float buttonParallax = mouseXDelta * speeds[0]; // Adjust the speed index as needed
+            Vector3 buttonTargetPosition = new Vector3(buttonText.transform.position.x + buttonParallax, buttonText.transform.position.y, buttonText.transform.position.z);
+            buttonText.transform.position = Vector3.Lerp(buttonText.transform.position, buttonTargetPosition, Time.deltaTime);
         }
 
         // Update the previous mouse position for the next frame
